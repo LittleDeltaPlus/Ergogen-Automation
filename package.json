@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "gen": "ergogen -d ."
+    "gen": "ergogen -d ./Config/Taiko-0.yaml"
   },
   "dependencies": {
     "ergogen": "github:ergogen/ergogen#v4.0.4"
