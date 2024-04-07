@@ -8,10 +8,13 @@ container_cmd ?= docker
 container_args ?= -w /$(boardname) -v $(shell pwd):/$(boardname) --rm
 
 setup:
+	cp -f ./Config/${board_name}.yaml
+	mv {board_name}.yaml config.yaml
 	npm install
 
 # outputs from 
-output/pcbs/$(board_name)_main.kicad_pcb output/pcbs/$(board_name)_plate.kicad_pcb output/pcbs/$(board_name)_bottom.kicad_pcb &: ./Config/${board_name}.yaml
+output/pcbs/$(board_name)_main.kicad_pcb output/pcbs/$(board_name)_plate.kicad_pcb output/pcbs/$(board_name)_bottom.kicad_pcb &: config.yaml
+
 	npm run gen
 
 output/pcbs/%.dsn: output/pcbs/%.kicad_pcb
