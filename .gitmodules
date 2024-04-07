@@ -1,6 +1,6 @@
 [submodule "Config"]
 	path = Config
 	url = https://github.com/LittleDeltaPlus/Taiko-0.git
-[submodule "footprint-extras"]
+[submodule "footprints"]
 	path = footprints
 	url = https://github.com/LittleDeltaPlus/Ergogen-Extras.git
