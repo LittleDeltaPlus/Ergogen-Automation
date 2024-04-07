@@ -3,14 +3,15 @@
 .PHONY: clean all setup
 .DEFAULT: all
 
+board_name ?= Taiko-0
 container_cmd ?= docker
-container_args ?= -w /board -v $(shell pwd):/board --rm
+container_args ?= -w /$(boardname) -v $(shell pwd):/$(boardname) --rm
 
 setup:
 	npm install
 
 # outputs from 
-output/pcbs/board.kicad_pcb output/pcbs/top_plate.kicad_pcb output/pcbs/bottom_plate.kicad_pcb &: config.yaml
+output/pcbs/$(board_name)_main.kicad_pcb output/pcbs/$(board_name)_plate.kicad_pcb output/pcbs/$(board_name)_bottom.kicad_pcb &: ./${board_name}.yaml
 	npm run gen
 
 output/pcbs/%.dsn: output/pcbs/%.kicad_pcb
